@@ -56,6 +56,7 @@ function Login({setIsLoggedIn}) {
                 />
                 <input 
                 required
+                type="password"
                 value={password} 
                 placeholder="Enter your password" 
                 onChange={handlePassword}

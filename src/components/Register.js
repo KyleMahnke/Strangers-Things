@@ -47,6 +47,7 @@ function Register(props) {
                 />
                 <input 
                 required
+                type="password"
                 value={password} 
                 minLength="6"
                 placeholder="Choose your password" 

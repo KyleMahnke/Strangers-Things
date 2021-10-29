@@ -11,6 +11,9 @@ function Nav({ isLoggedIn, setIsLoggedIn }) {
         <li>
           <Link to="/Posts">Posts</Link>
         </li>
+        <li>
+          <Link to="/NewPost">New Post</Link>
+        </li>
         {isLoggedIn ? null : (
           <>
             <li>
