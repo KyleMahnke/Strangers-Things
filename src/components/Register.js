@@ -29,7 +29,7 @@ function Register(props) {
     })
 }).then(response => response.json())
   .then(result => {
-    console.log(result);
+    localStorage.setItem('token', 'result.data.token');
   })
   .catch(console.error);
     }
@@ -39,12 +39,16 @@ function Register(props) {
             <h1>This is the Register page</h1>
             <form onSubmit={handleSubmit}>
                 <input 
+                required
                 value={username} 
+                minLength="4"
                 placeholder="Choose your username" 
                 onChange={handleUsername} 
                 />
                 <input 
+                required
                 value={password} 
+                minLength="6"
                 placeholder="Choose your password" 
                 onChange={handlePassword}
                 />

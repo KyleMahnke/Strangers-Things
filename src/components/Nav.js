@@ -1,25 +1,32 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
-function Nav(props) {
-    return (
-        <div>
-            <ul>
+function Nav({ isLoggedIn, setIsLoggedIn }) {
+  return (
+    <div>
+      <ul>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/Posts">Posts</Link>
+        </li>
+        {isLoggedIn ? null : (
+          <>
             <li>
-              <Link to="/">Home</Link>
+              <Link to="/Login">Login</Link>
             </li>
             <li>
-              <Link to="/Posts">Posts</Link>
+              <Link to="/Register">Register</Link>
             </li>
-            <li>
-                <Link to="/Login">Login</Link>
-            </li>
-            <li>
-                <Link to="/Register">Register</Link>
-            </li>
-          </ul>
-        </div>
-    );
+          </>
+        )}
+        <button onClick={() => {
+          setIsLoggedIn(false)
+          localStorage.clear()}}>Log Out</button>
+      </ul>
+    </div>
+  );
 }
 
 export default Nav;
