@@ -9,7 +9,7 @@ function Posts(props) {
     useEffect(() => { 
         async function getPosts(){
             const response = await fetch(
-                'https://strangers-things.herokuapp.com/api/2109-lsu-web-ft/posts'
+                'https://strangers-things.herokuapp.com/api/2109-lsu-rm-web-ft/posts'
             );
 
             const responseObj = await response.json() 

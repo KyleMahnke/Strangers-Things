@@ -7,6 +7,8 @@ function SinglePost({ post }) {
             <ul>
                 <li>{post.description}</li>
                 <li>{post.price}</li>
+                <li>{post.location}</li>
+                <li>{post.willDeliver}</li>
             </ul>
         </div>
     );

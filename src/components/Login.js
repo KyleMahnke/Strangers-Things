@@ -23,7 +23,7 @@ function Login({setIsLoggedIn}) {
 
     async function handleSubmit(event) {
         event.preventDefault();
-        const response = await fetch('https://strangers-things.herokuapp.com/api/2109-lsu-web-ft/users/login',
+        const response = await fetch('https://strangers-things.herokuapp.com/api/2109-lsu-rm-web-ft/users/login',
         {
         method: "POST",
         headers: {

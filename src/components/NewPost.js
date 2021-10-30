@@ -6,7 +6,7 @@ function NewPost(){
     const [description, setDescription] = useState("");
     const [price, setPrice] = useState("");
     const [location, setLocation] = useState("");
-    const [willDeliver, setWillDeliver] = useState("");
+    const [willDeliver, setWillDeliver] = useState(false);
 
     function handleTitle(event) {
         setTitle(event.target.value);
@@ -25,23 +25,26 @@ function NewPost(){
     }
 
     function handleWillDeliever(event) {
-        setWillDeliver(event.target.value);
+        setWillDeliver(!willDeliver);
     }
+
+    const token = localStorage.getItem('token');
+
 
     async function handleSubmit(event) {
         event.preventDefault();
-        const response = await fetch('https://strangers-things.herokuapp.com/api/2109-lsu-web-ft/posts', {
+        const response = await fetch('https://strangers-things.herokuapp.com/api/2109-lsu-rm-web-ft/posts', {
             method: "POST",
             headers: {
               'Content-Type': 'application/json',
-              //'Authorization': 'Bearer TOKEN_STRING_HERE'
+              'Authorization': `Bearer ${token}`
             },
             body: JSON.stringify({
               post: {
-                title: "",
-                description: "",
-                price: "",
-                willDeliver: false
+                title: title,
+                description: description,
+                price: price,
+                willDeliver: willDeliver
               }
             })
           }).then(response => response.json())
@@ -50,16 +53,9 @@ function NewPost(){
             })
             .catch(console.error);
     }
-    //title (string)
-    //description (string)
-    //price (string)
-    //location (string)
-    //willDeliver (boolean)
-    
-    //submit button (fetch request)
 
     return (
-        <form>
+        <form onSubmit={handleSubmit}>
             <label>
                 Title:
                 <input 
@@ -111,8 +107,12 @@ function NewPost(){
             <label>
                 Will Deliver:
                 <input
+                type='checkbox'
+                checked={willDeliver}
+                onChange={handleWillDeliever}
                 />
             </label>
+            <button type='submit'>Create Post</button>
             
         </form>
     );
