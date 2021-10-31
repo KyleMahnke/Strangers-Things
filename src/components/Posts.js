@@ -2,6 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 
 import SinglePost from './SinglePost';
+import deletePost from './DeletePost';
 
 function Posts(props) {
     const [ posts, setPosts ] = useState(["default value"]);
@@ -23,10 +24,19 @@ function Posts(props) {
         return <SinglePost post={post} />;
     })
 
+    const postID = posts.map._id 
+
+    const handleClick = async (postID) => {
+        await deletePost(localStorage._id, postID)
+    }
+
     return (
         <div>
             <h1>Posts:</h1>
             {postsToRender}
+            {posts.isAuthor ?
+            <button type="button" onClick={() => handleClick(posts._id)}>Delete</button>
+            : null}
         </div>     
     );
 }
